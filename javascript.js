@@ -29,7 +29,7 @@ const board = (() => {
     };
 })();
 
-const gameController = (() => {
+ const gameController = (() => {
     let player1 = createPlayer('Ryan', 'x');
     let player2 = createPlayer('Moeka', 'o');
 

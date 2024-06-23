@@ -1,39 +1,72 @@
-//factory function that creates players
-const player = (marker) => {
-    const getMarker = () => marker;
-    return {getMarker};
+function createPlayer(name, marker) {
+    return {
+        name:name,
+        marker:marker
+    };
 };
 
-const gameBoard = (function () {
-    board = ['','','','','','','','','',];
+const board = function gameBoard(){
+    const board = ['','','','','','','','',''];
 
-    clearBoard = function () {
-        for(let i = 0; i < board.length; i++){
-            board[i] = '';
+    const getBoard = () => board;
+
+    const setCell = (index, player) => {
+        if(board[index] == '') {
+            board[index] = player.marker;
         }
-    }
-
-    const getCell = (index) => {
-
+        else {
+            return;
+        };
     };
 
-    setCell = (index, sign) => {
-
+    const printBoard = () => {
+        console.log(getBoard());
     };
 
     return {
-        clearBoard
+        getBoard, setCell, printBoard
+    };
+}();
+
+const gameController = function gameController () {
+    let player1 = createPlayer('Ryan', 'x');
+    let player2 = createPlayer('Moeka', 'o');
+
+    let activePlayer = player1;
+
+    const switchPlayer = () => {
+        activePlayer = activePlayer === player1 ? player2 : player1;
     };
 
-})();
-
-const gameController = (function() {
-    const player1 = player('X');
-    const player2 = player('O');
-    let round = 1;
-    
-    const getRound = () => {
-        return round;
+    const playRound = (index) => {
+        console.log('Marking cell');
+        board.setCell(index, activePlayer);
+        switchPlayer();
+        printNewRound();
     }
-    const playRound = (index, )
-})
+
+    const printNewRound = () => {
+        console.log('printing board');
+        board.printBoard();
+        console.log(`now it is ${activePlayer.name}'s turn!`);
+        choice = Number(prompt());
+        if (choice == 99) {
+            return;
+        }
+        else {
+            playRound(choice);
+        } 
+
+    }
+
+    printNewRound();
+
+    return { 
+        playRound
+    }
+}();
+
+const displayController = () => {
+    const gameBoardDiv = document.getElementById("gameboard");
+    const resetButton = document.getElementById("reset");
+}();

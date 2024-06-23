@@ -1,0 +1,9 @@
+button {
+    margin: 0px;
+}
+
+.cell {
+    height: 140px;
+    width: 140px;
+    outline: 1px solid black;
+}

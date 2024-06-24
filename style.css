@@ -3,7 +3,14 @@ button {
 }
 
 .cell {
-    height: 140px;
-    width: 140px;
     outline: 1px solid black;
+    height: 200px;
+}
+
+.gameboard {
+    display: grid;
+    width: 600px;
+    height: 600px;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: ;
 }
